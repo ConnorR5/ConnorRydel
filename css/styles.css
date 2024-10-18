@@ -1,0 +1,96 @@
+/* styles.css */
+
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Prevent scrollbars during animation */
+  body {
+    background-color: #ede5d2;
+    overflow: hidden;
+  }
+  
+  /* Arrow styling and animation */
+  .arrow {
+    position: absolute;
+    /* Starting position off-screen to the left */
+    left: -40%;        /* Adjusted to ensure the entire arrow starts off-screen */
+    /* Vertical position at 65% on the Y-axis */
+    bottom: 65%;
+    /* Size of the arrow line */
+    width: 35%;        /* Length of the arrow's shaft */
+    height: 0.7%;        /* Thickness of the arrow's shaft */
+    background-color: black;
+    border-radius: 5px;  /* Rounded corners */
+    /* Animation */
+    animation: slide-in 2s ease-out forwards;
+    animation-delay: 2s;
+  }
+  
+  /* Arrowhead created using pseudo-elements */
+  .arrow::before,
+  .arrow::after {
+    content: '';
+    position: absolute;
+    width: 20px;         /* Length of each line in the arrowhead */
+    height: 7px;        /* Thickness matching the arrow's shaft */
+    background-color: black;
+    opacity: 1;
+    border-radius: 5px;
+    /* Position at the end of the arrow line */
+    right: 0.3%;
+    top: 0;
+    transform-origin: right center;
+  }
+  
+  /* Rotate to form the '>' shape */
+  .arrow::before {
+    transform: translateY(-10%) rotate(45deg);
+  }
+  
+  .arrow::after {
+    transform: translateY(-10%) rotate(-45deg);
+  }
+  
+  /* Keyframes for the slide-in animation */
+  @keyframes slide-in {
+    from {
+      left: -30%;      /* Starting off-screen */
+    }
+    to {
+      left: 10%;       /* Ending position at 70% on the X-axis */
+    }
+  }
+  
+  /* Introduction Text Styles */
+  .intro-text {
+    position: absolute;
+    bottom: 65%;       /* Same vertical position as the arrow */
+    left: 10%;         /* Starting at 10% from the left */
+    width: 60%;        /* Occupies 60% of the viewport width */
+  }
+  
+  .letter {
+    position: relative;
+    display: inline-block;
+    bottom: 0;
+    opacity: 0;
+    font-size: 1.7vw;
+    font-family: 'Archivo Black', sans-serif;
+    animation: rise-up 0.5s forwards;
+  }
+  
+  /* Keyframes for letters rising up */
+  @keyframes rise-up {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+    to {
+      bottom: 20px;    /* Adjust as needed */
+      opacity: 1;
+    }
+  }
